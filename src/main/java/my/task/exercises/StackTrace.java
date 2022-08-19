@@ -4,10 +4,7 @@ import java.util.Scanner;
 
 public class StackTrace {
 
-    private static int n;
-
     public static int factorial(int n) {
-        StackTrace.n = n;
 
         System.out.println(factorial(n));
         var walker = StackWalker.getInstance();
