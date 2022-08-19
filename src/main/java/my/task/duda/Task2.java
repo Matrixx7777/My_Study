@@ -1,4 +1,4 @@
-package my.task.asseco;
+package my.task.duda;
 
 import java.util.ArrayList;
 

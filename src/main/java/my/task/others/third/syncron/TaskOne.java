@@ -1,4 +1,4 @@
-package my.task.syncron;
+package my.task.others.third.syncron;
 
 import java.util.*;
 

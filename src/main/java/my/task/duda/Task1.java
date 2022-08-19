@@ -1,4 +1,4 @@
-package my.task.asseco;
+package my.task.duda;
 
 public class Task1 {
     public static String createPicture(int n) {
