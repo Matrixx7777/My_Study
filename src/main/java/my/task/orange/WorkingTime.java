@@ -4,11 +4,20 @@ import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
+import my.task.orange.json.Views;
+import org.codehaus.jackson.map.annotate.JsonView;
+
 public class WorkingTime {
 
+    @JsonView(Views.StartTime.class)
     private LocalTime startTime;
+
+    @JsonView(Views.EndTime.class)
     private LocalTime endTime;
-    private final Map<LocalTime, LocalTime> cover = new HashMap<>();
+
+    @JsonView(Views.WorkingTime.class)
+    private Map<LocalTime, LocalTime> cover = new HashMap<>();
+//    private final List<Meetings> meetings = new ArrayList<>();
 
     public WorkingTime(int startHour, int endHour) {
         this.startTime = LocalTime.of(startHour,0);
@@ -28,11 +37,16 @@ public class WorkingTime {
 
     public int getEndMinute() { return endTime.getMinute(); }
 
-    public void setStartHourAndMinute(int startHour, int startMinute ){ this.startTime = LocalTime.of(startHour, startMinute); }
+    public void setStartHourAndMinute(int startHour, int startMinute,int endHour, int endMinute){
+        this.startTime = LocalTime.of(startHour, startMinute);
+        this.endTime = LocalTime.of(endHour, endMinute);
+    }
 
-    public void setEndHourAndMinute(int endHour, int endMinute ){ this.endTime = LocalTime.of(endHour, endMinute); }
+    public void setMeetings( Map<LocalTime, LocalTime> cover){
+        this.cover = cover;
+    }
 
-    public void addMeetingToCalendar(int startHour, int startMinute, int endHour, int endMinute) {
+    public Map<LocalTime, LocalTime> addMeetingToCalendar(int startHour, int startMinute, int endHour, int endMinute) {
        int longMeetingAtLeast30Min = (endHour - startHour) * 60 + startMinute - endMinute;
         if(startHour < getStartHour() || endHour > getEndHour() || startHour < 0 || startHour > 24 || endHour < 0 || endHour > 24 ||
                 startHour == getStartHour() && startMinute < getStartMinute() || endHour == getEndHour() && endMinute > getEndMinute() ||
@@ -43,9 +57,10 @@ public class WorkingTime {
                  endHour == getEndHour() && endMinute <= getEndMinute() ) {
             cover.put(LocalTime.of(startHour, startMinute), LocalTime.of(endHour, endMinute));
         }
+        return cover;
     }
 
-    public void coverageEmpty() {
+    public Map<LocalTime, LocalTime> coverageEmpty() {
         if(this.cover.isEmpty()){
             System.err.println("Coverage empty.");
             for (int i = 0; i < cover.size(); i++) {
@@ -69,5 +84,32 @@ public class WorkingTime {
         if(LocalTime.MAX.truncatedTo(ChronoUnit.MINUTES).isAfter(lastEnd)){
             System.err.println("Missing coverage between: " + lastEnd + " and " + closeHours);
         }
+        return cover;
     }
+
+//    public void coverageEmpty() {
+//        if(this.cover.isEmpty()){
+//            System.err.println("Coverage empty.");
+//            for (int i = 0; i < cover.size(); i++) {
+//                System.out.println(cover.keySet() + " " + cover.entrySet() );
+//            }
+//        }
+//
+//        Set<LocalTime> startTimes = this.cover.keySet();
+//        List<LocalTime> sortedStartTimes = new ArrayList<>(startTimes);
+//        Collections.sort(sortedStartTimes);
+//
+//        LocalTime lastEnd= LocalTime.of(getStartHour(),getStartMinute());
+//        for (LocalTime start : sortedStartTimes) {
+//            if(lastEnd.plus(1, ChronoUnit.MINUTES).isBefore(start)){
+//                System.err.println("Missing coverage between: " + lastEnd + " and " + start);
+//            }
+//            lastEnd = this.cover.get(start);
+//        }
+//
+//        LocalTime closeHours= LocalTime.of(getEndHour(), getEndMinute());
+//        if(LocalTime.MAX.truncatedTo(ChronoUnit.MINUTES).isAfter(lastEnd)){
+//            System.err.println("Missing coverage between: " + lastEnd + " and " + closeHours);
+//        }
+//    }
 }
