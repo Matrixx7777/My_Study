@@ -40,7 +40,7 @@ public class Calendars {
         int startHourInCalendar = 0; int startMinuteInCalendar = 0;
         int endHourInCalendar = 0; int endMinuteInCalendar = 0;
 
-        System.err.println("Proposal for the meetings between two calendars:");
+        System.err.println("Proposal for the meetings between the calendars:");
 
         for (int i = 0; i < meetingsList.size(); i++) {
             int startHour = meetingsList.get(i).getStartHour() ; int startMinute = meetingsList.get(i).getStartMinute();
