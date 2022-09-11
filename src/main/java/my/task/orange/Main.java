@@ -1,28 +1,40 @@
 package my.task.orange;
 
-import java.time.LocalTime;
+import com.beust.ah.A;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
 
-        WorkingTime calendar1 = new WorkingTime(9, 0, 19, 55);
-        Map<LocalTime, LocalTime> met1 = calendar1.addMeetingToCalendar(9, 30, 10, 30);
-        calendar1.addMeetingToCalendar(12, 0, 13, 0);
-        calendar1.addMeetingToCalendar(16, 0, 18, 0);
+        Meetings meet_1 = new Meetings(9,0,10,30);
+        Meetings meet_2 = new Meetings(12,0,13,30);
+        Meetings meet_3 = new Meetings(16,18);
 
-        WorkingTime calendar2 = new WorkingTime(10, 0, 18, 30);
-        Map<LocalTime, LocalTime> met2 = calendar2.addMeetingToCalendar(10, 0, 11, 30);
-        calendar2.addMeetingToCalendar(12, 30, 14, 30);
-        calendar2.addMeetingToCalendar(14, 30, 15, 0);
-        calendar2.addMeetingToCalendar(16, 0, 17, 0);
+        Meetings meet_4 = new Meetings(10,0,11,30);
+        Meetings meet_5 = new Meetings(12,30,14,30);
+        Meetings meet_6 = new Meetings(14,30,15,0);
+        Meetings meet_7 = new Meetings(16,17);
 
-        Map<LocalTime, LocalTime> cal1 = calendar1.coverageEmpty();
-        calendar2.coverageEmpty();
+        List<Meetings> meetingsListFirst = new ArrayList<>();
+        meetingsListFirst.add(meet_1);
+        meetingsListFirst.add(meet_2);
+        meetingsListFirst.add(meet_3);
 
-        System.out.println(cal1);
+        List<Meetings> meetingsListSecond = new ArrayList<>();
+        meetingsListSecond.add(meet_4);
+        meetingsListSecond.add(meet_5);
+        meetingsListSecond.add(meet_6);
+        meetingsListSecond.add(meet_7);
 
+        Calendars calendar1 = new Calendars(9,0,19,55);
+        Calendars calendar2 = new Calendars(10,0,18,30);
+
+        List<Calendars> calendarsList = new ArrayList<>();
+        calendarsList.add(calendar1);
+        calendarsList.add(calendar2);
+
+        calendar1.coverageEmpty(meetingsListFirst, meetingsListSecond, calendarsList);
     }
 }
