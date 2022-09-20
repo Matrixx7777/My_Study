@@ -1,6 +1,6 @@
 //package java.first;
 //
-//import my.test.java.task.first.Fibonacci;
+//import my.task.first.Fibonacci;
 //import org.junit.jupiter.api.Test;
 //import org.testng.Assert;
 //

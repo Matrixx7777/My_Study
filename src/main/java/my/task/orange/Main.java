@@ -16,15 +16,13 @@ public class Main {
         Meetings meet_7 = new Meetings(16,17);
 
         List<Meetings> meetingsList = new ArrayList<>();
-        //Calendar1
         meetingsList.add(meet_1);
         meetingsList.add(meet_2);
-        meetingsList.add(meet_3);
-        //Calendar2
         meetingsList.add(meet_4);
         meetingsList.add(meet_5);
         meetingsList.add(meet_6);
-//        meetingsList.add(meet_7);
+        meetingsList.add(meet_7);
+        meetingsList.add(meet_3);
 
         Calendars calendar1 = new Calendars(9,0,19,55);
         Calendars calendar2 = new Calendars(10,0,18,30);
@@ -33,6 +31,7 @@ public class Main {
         calendarsList.add(calendar1);
         calendarsList.add(calendar2);
 
-        calendar1.coverageEmpty(meetingsList, calendarsList);
+        FindFreeTerm freeTerm = new FindFreeTerm();
+        freeTerm.coverageEmpty(meetingsList,calendarsList);
     }
 }

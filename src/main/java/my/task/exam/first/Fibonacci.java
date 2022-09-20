@@ -1,4 +1,4 @@
-package my.test.java.task.first;
+package my.task.exam.first;
 
 public class Fibonacci {
     public int fibonacci(int n) {

@@ -1,4 +1,4 @@
-package my.test.java.task.second;
+package my.task.exam.second;
 
 import java.util.ArrayList;
 import java.util.List;
