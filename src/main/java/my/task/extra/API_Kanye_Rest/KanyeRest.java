@@ -16,7 +16,7 @@ public class KanyeRest {
         }
     }
 
-    public static void getQuote() throws IOException {
+    public static String getQuote() throws IOException {
         String url = "https://api.kanye.rest/";
         StringBuilder builder = new StringBuilder();
         if(isUrlValid(url)) {
@@ -30,8 +30,8 @@ public class KanyeRest {
                     builder.append(responseReader.nextLine());
                 }
                 responseReader.close();
-                System.err.println(builder);
             }
         }
+        return String.valueOf(builder);
     }
 }
