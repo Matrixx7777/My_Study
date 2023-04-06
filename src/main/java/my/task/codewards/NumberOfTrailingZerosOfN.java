@@ -7,6 +7,7 @@ public class NumberOfTrailingZerosOfN {
             count += n / i;
         System.out.println(count);
     }
+
     public static void main(String[] args) {
         NumberOfTrailingZerosOfN.zeros(0);
         NumberOfTrailingZerosOfN.zeros(6);

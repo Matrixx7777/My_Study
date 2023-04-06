@@ -15,7 +15,6 @@ public class RgbToHex {
     }
 
     public static void main(String[] args) {
-
        RgbToHex.rgb(0, 0, 0);
        RgbToHex.rgb(1, 2, 3);
        RgbToHex.rgb(255, 255, 255);

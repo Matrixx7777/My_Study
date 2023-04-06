@@ -21,6 +21,7 @@ public class TwoSum {
         }
         System.out.println(Arrays.toString(result));
     }
+
     public static void main(String[] args) {
         int[] numbers = {8,1,4,3,5};
         int target = 8;
