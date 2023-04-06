@@ -21,6 +21,7 @@ public class MyRegrex {
     }
 
     public static void main(String[] args){
+
         List<String> listIp = new ArrayList<>();
         listIp.add("000.12.12.034");
         listIp.add("121.234.12.12");
