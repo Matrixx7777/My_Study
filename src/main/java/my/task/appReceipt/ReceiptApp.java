@@ -18,7 +18,7 @@ public class ReceiptApp {
 
             switch (wybor) {
                 case 1:
-                    dodajParagon(scanner);
+                    addReceipt(scanner);
                     break;
                 case 2:
                     generateReport();
@@ -33,7 +33,7 @@ public class ReceiptApp {
         }
     }
 
-    private static void dodajParagon(Scanner scanner) {
+    private static void addReceipt(Scanner scanner) {
         System.out.print("Receipt number: ");
         String number = scanner.next();
 
